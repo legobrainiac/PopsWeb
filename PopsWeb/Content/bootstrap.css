@@ -100,7 +100,7 @@ mark {
 }
 
 code,
-kbd,
+kDB,
 pre,
 samp {
   font-family: monospace, serif;
@@ -2092,7 +2092,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
   color: #ffffff;
   background-color: #428bca;
-  border-color: #357ebd;
+  border-color: #357eDB;
 }
 
 .btn-primary:hover,
@@ -2127,7 +2127,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
   background-color: #428bca;
-  border-color: #357ebd;
+  border-color: #357eDB;
 }
 
 .btn-warning {
