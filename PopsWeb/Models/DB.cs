@@ -16,72 +16,72 @@ namespace PopsWeb
             get
             {
                 if (instance == null)
-                    instance = new DB();
+                    instance = new DB ();
                 return instance;
             }
         }
         private string strLigacao;
         private SqlConnection ligacaoDB;
-        public DB()
+        public DB ()
         {
             //ligação à DB
-            strLigacao = ConfigurationManager.ConnectionStrings["sql"].ToString();
-            ligacaoDB = new SqlConnection(strLigacao);
-            ligacaoDB.Open();
+            strLigacao = ConfigurationManager.ConnectionStrings["sql"].ToString ();
+            ligacaoDB = new SqlConnection (strLigacao);
+            ligacaoDB.Open ();
         }
-        ~DB()
+        ~DB ()
         {
             try
             {
-                ligacaoDB.Close();
+                ligacaoDB.Close ();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine (e.Message);
             }
         }
         #region Funções genéricas
         //devolve consulta
-        public DataTable devolveConsulta(string sql)
+        public DataTable devolveConsulta (string sql)
         {
-            SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-            DataTable registos = new DataTable();
-            SqlDataReader dados = comando.ExecuteReader();
-            registos.Load(dados);
-            dados.Dispose();
-            comando.Dispose();
+            SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+            DataTable registos = new DataTable ();
+            SqlDataReader dados = comando.ExecuteReader ();
+            registos.Load (dados);
+            dados.Dispose ();
+            comando.Dispose ();
             return registos;
         }
-        public DataTable devolveConsulta(string sql, List<SqlParameter> parametros)
+        public DataTable devolveConsulta (string sql, List<SqlParameter> parametros)
         {
-            SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-            DataTable registos = new DataTable();
-            comando.Parameters.AddRange(parametros.ToArray());
-            SqlDataReader dados = comando.ExecuteReader();
-            registos.Load(dados);
-            dados.Dispose();
-            comando.Dispose();
+            SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+            DataTable registos = new DataTable ();
+            comando.Parameters.AddRange (parametros.ToArray ());
+            SqlDataReader dados = comando.ExecuteReader ();
+            registos.Load (dados);
+            dados.Dispose ();
+            comando.Dispose ();
             return registos;
         }
-        public DataTable devolveConsulta(string sql, List<SqlParameter> parametros, SqlTransaction transacao)
+        public DataTable devolveConsulta (string sql, List<SqlParameter> parametros, SqlTransaction transacao)
         {
-            SqlCommand comando = new SqlCommand(sql, ligacaoDB);
+            SqlCommand comando = new SqlCommand (sql, ligacaoDB);
             comando.Transaction = transacao;
-            DataTable registos = new DataTable();
-            comando.Parameters.AddRange(parametros.ToArray());
-            SqlDataReader dados = comando.ExecuteReader();
-            registos.Load(dados);
-            dados.Dispose();
-            comando.Dispose();
+            DataTable registos = new DataTable ();
+            comando.Parameters.AddRange (parametros.ToArray ());
+            SqlDataReader dados = comando.ExecuteReader ();
+            registos.Load (dados);
+            dados.Dispose ();
+            comando.Dispose ();
             return registos;
         }
-        public bool executaComando(string sql)
+        public bool executaComando (string sql)
         {
             try
             {
-                SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-                comando.ExecuteNonQuery();
-                comando.Dispose();
+                SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+                comando.ExecuteNonQuery ();
+                comando.Dispose ();
             }
             catch
             {
@@ -89,69 +89,70 @@ namespace PopsWeb
             }
             return true;
         }
-        public bool executaComando(string sql, List<SqlParameter> parametros)
+        public bool executaComando (string sql, List<SqlParameter> parametros)
         {
             try
             {
-                SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-                comando.Parameters.AddRange(parametros.ToArray());
-                comando.ExecuteNonQuery();
-                comando.Dispose();
+                SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+                comando.Parameters.AddRange (parametros.ToArray ());
+                comando.ExecuteNonQuery ();
+                comando.Dispose ();
             }
             catch (Exception erro)
             {
-                Console.Write(erro.Message);
+                Console.Write (erro.Message);
                 //throw erro;
                 return false;
             }
             return true;
         }
-        public bool executaComando(string sql, List<SqlParameter> parametros, SqlTransaction transacao)
+
+        public bool executaComando (string sql, List<SqlParameter> parametros, SqlTransaction transacao)
         {
             try
             {
-                SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-                comando.Parameters.AddRange(parametros.ToArray());
+                SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+                comando.Parameters.AddRange (parametros.ToArray ());
                 comando.Transaction = transacao;
-                comando.ExecuteNonQuery();
-                comando.Dispose();
+                comando.ExecuteNonQuery ();
+                comando.Dispose ();
             }
             catch (Exception erro)
             {
-                Console.Write(erro.Message);
+                Console.Write (erro.Message);
                 return false;
             }
             return true;
         }
-        public int executaScalar(string sql)
+        public int executaScalar (string sql)
         {
             int valor = -1;
             try
             {
-                SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-                valor = (int)comando.ExecuteScalar();
-                comando.Dispose();
+                SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+                valor = (int)comando.ExecuteScalar ();
+                comando.Dispose ();
             }
             catch (Exception erro)
             {
-                Console.Write(erro.Message);
+                Console.Write (erro.Message);
                 return valor;
             }
             return valor;
         }
-        public int executaScalar(string sql, List<SqlParameter> parametros)
+        public int executaScalar (string sql, List<SqlParameter> parametros)
         {
             int valor = -1;
             try
             {
-                SqlCommand comando = new SqlCommand(sql, ligacaoDB);
-                comando.Parameters.AddRange(parametros.ToArray());
-                valor = (int)comando.ExecuteScalar();
-                comando.Dispose();
+                SqlCommand comando = new SqlCommand (sql, ligacaoDB);
+                comando.Parameters.AddRange (parametros.ToArray ());
+                valor = (int)comando.ExecuteScalar ();
+                comando.Dispose ();
             }
             catch (Exception erro)
             {
-                Console.Write(erro.Message);
+                Console.Write (erro.Message);
                 return valor;
             }
             return valor;
