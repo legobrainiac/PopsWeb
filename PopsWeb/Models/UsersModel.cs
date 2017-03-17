@@ -120,5 +120,20 @@ namespace PopsWeb.Models
             };
             DB.Instance.executaComando (sql, parametros);
         }
+
+        public void create (UsersModel novo)
+        {
+            string sql = @"insert into users(username, pass, email, usertype) values(@users,HASHBYTES('SHA2_512',@pass), @email, @usertype);";
+
+            List<SqlParameter> parametros = new List<SqlParameter> ()
+            {
+                new SqlParameter () {ParameterName="@username", SqlDbType = SqlDbType.VarChar,Value=novo.username},
+                new SqlParameter () {ParameterName="@pass", SqlDbType = SqlDbType.VarChar,Value=novo.email},
+                new SqlParameter () {ParameterName="@email", SqlDbType = SqlDbType.VarChar,Value=novo.email},
+                new SqlParameter () {ParameterName="@usertype", SqlDbType = SqlDbType.Int,Value=novo.usertype},
+            };
+
+            DB.Instance.executaComando (sql, parametros);
+        }
     }
 }

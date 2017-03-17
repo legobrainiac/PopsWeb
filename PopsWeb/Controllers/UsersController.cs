@@ -28,5 +28,28 @@ namespace PopsWeb.Controllers
             }
             return View (dados);
         }
+
+        public ActionResult Delete (int id)
+        {
+            users.delete (id);
+            return RedirectToAction ("index");
+        }
+
+        public ActionResult Create ()
+        {
+            return View ();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create (UsersModel novo)
+        {
+            if (ModelState.IsValid)
+            {
+                users.create (novo);
+                return RedirectToAction ("index");
+            }
+            return View (novo);
+        }
     }
 }
