@@ -123,7 +123,7 @@ namespace PopsWeb.Models
 
         public void create (UsersModel novo)
         {
-            string sql = @"insert into users(username, pass, email, usertype) values(@users,HASHBYTES('SHA2_512',@pass), @email, @usertype);";
+            string sql = @"insert into users(username, pass, email, usertype) values(@username,HASHBYTES('SHA2_512',@pass), @email, @usertype);";
 
             List<SqlParameter> parametros = new List<SqlParameter> ()
             {
