@@ -29,7 +29,7 @@ namespace PopsWeb.Models
 
         public List<UsersPopsModel> list ()
         {
-            string sql = "SELECT * FROM pops_collections";
+            string sql = "SELECT * FROM users_pops";
             DataTable registos = DB.Instance.devolveConsulta (sql);
             List<UsersPopsModel> lista = new List<UsersPopsModel> ();
             foreach (DataRow data in registos.Rows)
@@ -37,7 +37,7 @@ namespace PopsWeb.Models
                 UsersPopsModel novo = new UsersPopsModel ();
                 novo.id = int.Parse (data[0].ToString ());
                 novo.id_user = int.Parse (data[1].ToString ());
-                novo.id_pop = int.Parse (data[3].ToString ());
+                novo.id_pop = int.Parse (data[2].ToString ());
                 lista.Add (novo);
             }
             return lista;
@@ -45,7 +45,7 @@ namespace PopsWeb.Models
 
         public List<UsersPopsModel> list (int id)
         {
-            string sql = "SELECT * FROM pops_collections where id like @id";
+            string sql = "SELECT * FROM users_pops where id like @id";
 
             List<UsersPopsModel> lista = new List<UsersPopsModel> ();
 
@@ -61,7 +61,7 @@ namespace PopsWeb.Models
                 UsersPopsModel novo = new UsersPopsModel ();
                 novo.id = int.Parse (data[0].ToString ());
                 novo.id_user = int.Parse (data[1].ToString ());
-                novo.id_pop = int.Parse (data[3].ToString ());
+                novo.id_pop = int.Parse (data[2].ToString ());
                 lista.Add (novo);
             }
             return lista;
