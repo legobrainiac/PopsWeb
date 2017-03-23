@@ -81,7 +81,7 @@ namespace PopsWeb
                 comando.ExecuteNonQuery ();
                 comando.Dispose ();
             }
-            catch
+            catch (Exception erro)
             {
                 return false;
             }
