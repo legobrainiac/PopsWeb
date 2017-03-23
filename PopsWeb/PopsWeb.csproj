@@ -254,6 +254,8 @@
     <Content Include="Views\Pops\Index.cshtml" />
     <Content Include="Views\Pops\Create.cshtml" />
     <Content Include="Views\Pops\Edit.cshtml" />
+    <Content Include="Views\PopsCollection\Edit.cshtml" />
+    <Content Include="Views\PopsCollection\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
