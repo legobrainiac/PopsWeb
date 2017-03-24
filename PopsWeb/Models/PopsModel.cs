@@ -18,7 +18,7 @@ namespace PopsWeb.Models
         [StringLength (50)]
         public string pop_description { get; set; }
 
-        
+
         public int? pop_collection_id { get; set; }
 
         [DataType (DataType.Currency)]
@@ -112,10 +112,10 @@ namespace PopsWeb.Models
             DB.Instance.executaComando (sql, parametros);
         }
 
-        public void create (PopsModel novo)
+        public int create (PopsModel novo)
         {
             string sql = @"INSERT INTO pops(pop_name, pop_description, pop_collection_id, price)
-                        VALUES (@pop_name,@pop_description,@pop_collection_id,@price)";
+                        VALUES (@pop_name,@pop_description,@pop_collection_id,@price);SELECT cast(scope_identity() as int);";
             List<SqlParameter> parametros = new List<SqlParameter> ()
             {
                 new SqlParameter(){ParameterName="@pop_name", SqlDbType = SqlDbType.VarChar,Value=novo.pop_name},
@@ -123,7 +123,7 @@ namespace PopsWeb.Models
                 new SqlParameter(){ParameterName="@pop_collection_id", SqlDbType = SqlDbType.VarChar,Value=novo.pop_collection_id},
                  new SqlParameter(){ParameterName="@price", SqlDbType = SqlDbType.Int,Value=novo.price},
             };
-            DB.Instance.executaComando (sql, parametros);
+            return (int)DB.Instance.executaScalar (sql, parametros);
         }
     }
 }

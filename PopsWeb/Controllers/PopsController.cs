@@ -1,4 +1,5 @@
 ﻿using PopsWeb.Models;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PopsWeb.Controllers
@@ -44,11 +45,21 @@ namespace PopsWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create (PopsModel novo)
+        public ActionResult Create (PopsModel novo, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
-                pops.create (novo);
+                if (image == null)
+                {
+                    ModelState.AddModelError ("", "You can see the pop right? Take a picture of it");
+                    return View (novo);
+                }
+                int id = pops.create (novo); 
+
+                string filepath = Server.MapPath ("~/Content/Pops/") + id + ".jpg";
+                image.SaveAs (filepath);
+
+                
                 return RedirectToAction ("index");
             }
             return View (novo);
