@@ -12,7 +12,7 @@ namespace PopsWeb.Models
         public int id { get; set; }
         public int id_user { get; set; }
         public int id_pop { get; set; }
-    }
+    } 
 
     public class UsersPopsDB
     {
@@ -94,7 +94,7 @@ namespace PopsWeb.Models
 
         public void update (UsersPopsModel novo)
         {
-            string sql = @"UPDATE pops_collections SET id_user = @id_user, id_pop=@id_pop WHERE id=@id";
+            string sql = @"UPDATE users_pops SET id_user = @id_user, id_pop=@id_pop WHERE id=@id";
 
             List<SqlParameter> parametros = new List<SqlParameter> ()
             {
@@ -108,7 +108,7 @@ namespace PopsWeb.Models
         //delete
         public void delete (int id)
         {
-            string sql = "DELETE FROM pops_collections WHERE id=@id";
+            string sql = "DELETE FROM users_pops WHERE id=@id";
             List<SqlParameter> parametros = new List<SqlParameter> ()
             {
                 new SqlParameter(){ParameterName="@id",
