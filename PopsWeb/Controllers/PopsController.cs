@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace PopsWeb.Controllers
 {
+    [Authorize]
     public class PopsController : Controller
     {
         PopsDB pops = new PopsDB ();

@@ -18,12 +18,11 @@ namespace PopsWeb.Models
     {
         public void create (UsersPopsModel novo)
         {
-            string sql = @"INSERT INTO users_pops(id_user, id_pop)
-                        VALUES (@id_user, @id_pop)";
+            string sql = @"INSERT INTO users_pops(id_user, id_pop) values(@id_user, @id_pop)";
             List<SqlParameter> parametros = new List<SqlParameter> ()
             {
-                new SqlParameter(){ParameterName="@id_user", SqlDbType = SqlDbType.Int,Value=novo.id_pop},
-                new SqlParameter(){ParameterName="@id_pop", SqlDbType = SqlDbType.Int,Value=novo.id_user},
+                new SqlParameter(){ParameterName="@id_user", SqlDbType = SqlDbType.Int,Value=novo.id_user},
+                new SqlParameter(){ParameterName="@id_pop", SqlDbType = SqlDbType.Int,Value=novo.id_pop},
             };
             DB.Instance.executaComando (sql, parametros);
         }
@@ -47,6 +46,30 @@ namespace PopsWeb.Models
         public List<UsersPopsModel> list (int id)
         {
             string sql = "SELECT * FROM users_pops where id like @id";
+
+            List<UsersPopsModel> lista = new List<UsersPopsModel> ();
+
+            List<SqlParameter> parametros = new List<SqlParameter> ()
+            {
+                new SqlParameter(){ParameterName="@id", SqlDbType =SqlDbType.Int,Value=id},
+            };
+
+            DataTable registos = DB.Instance.devolveConsulta (sql, parametros);
+
+            foreach (DataRow data in registos.Rows)
+            {
+                UsersPopsModel novo = new UsersPopsModel ();
+                novo.id = int.Parse (data[0].ToString ());
+                novo.id_user = int.Parse (data[1].ToString ());
+                novo.id_pop = int.Parse (data[2].ToString ());
+                lista.Add (novo);
+            }
+            return lista;
+        }
+
+        public List<UsersPopsModel> list_user_collection (int id)
+        {
+            string sql = "SELECT * FROM users_pops where id_user like @id";
 
             List<UsersPopsModel> lista = new List<UsersPopsModel> ();
 
@@ -92,6 +115,6 @@ namespace PopsWeb.Models
                     SqlDbType =SqlDbType.Int,Value=id}
             };
             DB.Instance.executaComando (sql, parametros);
-        }       
+        }
     }
 }

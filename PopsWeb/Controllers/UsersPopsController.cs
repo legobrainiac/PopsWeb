@@ -3,14 +3,15 @@ using PopsWeb.Models;
 
 namespace PopsWeb.Controllers
 {
+    [Authorize]
     public class UsersPopsController : Controller
     {
         UsersPopsDB usersPops = new UsersPopsDB ();
 
         // GET: UsersPops
-        public ActionResult Index ()
+        public ActionResult Index (int id)
         {
-            return View (usersPops.list ());
+            return View (usersPops.list_user_collection (id));
         }
 
         public ActionResult Edit (int id)

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 namespace PopsWeb.Controllers
 {
+    [Authorize]
     public class PopsCollectionController : Controller
     {
         PopsCollectionDB popsCollection = new PopsCollectionDB ();
