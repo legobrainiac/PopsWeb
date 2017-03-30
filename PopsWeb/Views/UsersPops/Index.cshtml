@@ -11,27 +11,22 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_user)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_pop)
-        </th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.id_user)
+            @Html.ActionLink("Pops", "edit", new { id = item.id_pop })
         </td>
+        <th>
+            <img src="@Url.Content(String.Format("~/Content/Pops/{0}.jpg", item.id_pop))" width="100" />
+        </th>
         <td>
-            @Html.DisplayFor(modelItem => item.id_pop)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Home", "Index", new { id = item.id })
         </td>
     </tr>
 }
