@@ -260,6 +260,7 @@
     <Content Include="Views\UsersPops\Index.cshtml" />
     <Content Include="Views\UsersPops\Edit.cshtml" />
     <Content Include="Views\UsersPops\Create.cshtml" />
+    <Content Include="Views\UsersPops\Indexe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

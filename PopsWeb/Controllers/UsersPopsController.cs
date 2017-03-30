@@ -9,7 +9,12 @@ namespace PopsWeb.Controllers
         UsersPopsDB usersPops = new UsersPopsDB ();
 
         // GET: UsersPops
-        public ActionResult Index (int id)
+        public ActionResult Index ()
+        {
+            return View (usersPops.list ());
+        }
+
+        public ActionResult Indexe (int id)
         {
             return View (usersPops.list_user_collection (id));
         }

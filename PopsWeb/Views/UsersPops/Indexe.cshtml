@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PopsWeb.Models.UsersPopsModel>
+
+@{
+    ViewBag.Title = "Indexe";
+}
+
+<h2>My Pops</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_user)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_pop)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_user)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_pop)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>
