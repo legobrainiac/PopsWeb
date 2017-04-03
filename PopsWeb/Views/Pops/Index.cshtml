@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.pop_name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pop_description)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pop_collection_id)
+            Collection Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.price)
+            Price
         </th>
         <th>Image</th>
         <th></th>
@@ -36,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.pop_description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pop_collection_id)
+            @Html.DisplayFor(modelItem => item.pop_collection_name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.price)

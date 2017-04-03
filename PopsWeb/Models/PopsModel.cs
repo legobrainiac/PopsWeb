@@ -18,8 +18,9 @@ namespace PopsWeb.Models
         [StringLength (50)]
         public string pop_description { get; set; }
 
-
         public int? pop_collection_id { get; set; }
+
+        public string pop_collection_name { get; set; }
 
         [DataType (DataType.Currency)]
         public decimal price { get; set; }
@@ -43,7 +44,27 @@ namespace PopsWeb.Models
 
         public List<PopsModel> list ()
         {
-            string sql = "SELECT * FROM pops";
+            string sql = "SELECT pops.id, pop_name, pop_description, pop_collection_id, price, pops_collections.collection_name FROM pops inner join pops_collections on pops.pop_collection_id = pops_collections.id";
+
+            DataTable registos = DB.Instance.devolveConsulta (sql);
+            List<PopsModel> lista = new List<PopsModel> ();
+            foreach (DataRow data in registos.Rows)
+            {
+                PopsModel novo = new PopsModel ();
+                novo.id = int.Parse (data[0].ToString ());
+                novo.pop_name = data[1].ToString ();
+                novo.pop_description = data[2].ToString ();
+                novo.pop_collection_id = int.Parse (data[3].ToString ());
+                novo.price = decimal.Parse (data[4].ToString ());
+                novo.pop_collection_name = data[5].ToString ();
+                lista.Add (novo);
+            }
+            return lista;
+        }
+
+        public List<PopsModel> list_groupby_collection ()
+        {
+            string sql = "SELECT * FROM pops group by pop_collection_id";
             DataTable registos = DB.Instance.devolveConsulta (sql);
             List<PopsModel> lista = new List<PopsModel> ();
             foreach (DataRow data in registos.Rows)
@@ -61,7 +82,7 @@ namespace PopsWeb.Models
 
         public List<PopsModel> list (int id)
         {
-            string sql = "SELECT * FROM pops where id like @id";
+            string sql = "SELECT pops.id, pop_name, pop_description, pop_collection_id, price, pops_collections.collection_name FROM pops inner join pops_collections on pops.pop_collection_id = pops_collections.id  where pops.id like @id";
 
             List<PopsModel> lista = new List<PopsModel> ();
 
@@ -80,6 +101,7 @@ namespace PopsWeb.Models
                 novo.pop_description = data[2].ToString ();
                 novo.pop_collection_id = int.Parse (data[3].ToString ());
                 novo.price = decimal.Parse (data[4].ToString ());
+                novo.pop_collection_name = data[5].ToString ();
                 lista.Add (novo);
             }
             return lista;

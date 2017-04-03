@@ -21,8 +21,17 @@ namespace PopsWeb.Controllers
             return RedirectToAction ("index");
         }
 
+        public ActionResult Details (int id)
+        {
+            PopsRatingDB db = new PopsRatingDB ();
+            ViewBag.rating = db.avg_rating (id);
+            return View (pops.list (id)[0]);
+        }
+
         public ActionResult Edit (int id)
         {
+            PopsCollectionDB db = new PopsCollectionDB ();
+            ViewBag.collections = db.list ();
             return View (pops.list (id)[0]);
         }
 
@@ -41,6 +50,8 @@ namespace PopsWeb.Controllers
 
         public ActionResult Create ()
         {
+            PopsCollectionDB db = new PopsCollectionDB ();
+            ViewBag.collections = db.list ();
             return View ();
         }
 

@@ -13,21 +13,17 @@
     <tr>
         <th></th>
         <th></th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model)
-{
+{ 
     <tr>
         <td>
-            @Html.ActionLink("Pops", "edit", new { id = item.id_pop })
+            @Html.ActionLink("Details", "Details", new { id = item.id_pop })
         </td>
         <th>
             <img src="@Url.Content(String.Format("~/Content/Pops/{0}.jpg", item.id_pop))" width="100" />
         </th>
-        <td>
-            @Html.ActionLink("Home", "Index", new { id = item.id })
-        </td>
     </tr>
 }
 

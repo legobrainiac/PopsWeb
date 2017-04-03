@@ -4,6 +4,12 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
+
+//TODO(legobrainiac): Adicionar o botão no index dos pop para ir para uma view de rating
+//TODO(legobrainiac): melhorar a maneira como se adicionam os pop á coleção uma caixa dinamica com os pops todos
+//TODO(legobrainiac): Pesquisa dinamica de pops
+//TODO(legobrainiac): Mudar mais nomes de cenas
+////TODO(legobrainiac): Mais cenas de que me lembre depois 
 namespace PopsWeb
 {
     public class DB

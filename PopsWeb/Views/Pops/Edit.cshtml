@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.pop_collection_id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pop_collection_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("pop_collection_id", new SelectList(ViewBag.collections, "id", "collection_name"), "Choose a pop collection from the available ones...", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.pop_collection_id, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using PopsWeb.Models;
+using System.Web.Routing;
 
 namespace PopsWeb.Controllers
 {
@@ -17,6 +18,12 @@ namespace PopsWeb.Controllers
         public ActionResult Indexe (int id)
         {
             return View (usersPops.list_user_collection (id));
+        }
+
+        public ActionResult Details (int id)
+        {
+            int _id = id;
+            return RedirectToAction ("Details", "Pops", new { id = _id});
         }
 
         public ActionResult Edit (int id)
