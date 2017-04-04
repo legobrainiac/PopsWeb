@@ -48,6 +48,7 @@ namespace PopsWeb.Models
 
             DataTable registos = DB.Instance.devolveConsulta (sql);
             List<PopsModel> lista = new List<PopsModel> ();
+
             foreach (DataRow data in registos.Rows)
             {
                 PopsModel novo = new PopsModel ();

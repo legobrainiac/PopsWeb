@@ -263,12 +263,13 @@
     <Content Include="Views\UsersPops\Create.cshtml" />
     <Content Include="Views\UsersPops\Indexe.cshtml" />
     <Content Include="Views\Pops\Details.cshtml" />
+    <Content Include="Views\PopsRating\Rate.cshtml" />
+    <Content Include="Views\PopsRating\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Pops\" />
     <Folder Include="Views\LogOut\" />
-    <Folder Include="Views\PopsRating\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

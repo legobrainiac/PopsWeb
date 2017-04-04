@@ -1,24 +1,30 @@
-﻿@model PopsWeb.Models.UsersPopsModel
+﻿@model PopsWeb.Models.PopsRating
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Rate";
 }
 
-<h2>Create</h2>
+<h2>Rate</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>UsersPopsModel</h4>
+        <h4>PopsRating</h4>
         <hr />
         <div class="form-group">
             @Html.LabelFor(model => model.id_pop, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_pop", new SelectList(ViewBag.pops, "id", "pop_name"), "Choose a pop collection from the available ones...", new { @class = "form-control" })
+                @Html.DropDownList("id_pop", new SelectList(ViewBag.pops, "id", "pop_name"), "Choose a pop from the available ones...", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_pop, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.rating_pos, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rating_pos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rating_pos, "", new { @class = "text-danger" })
             </div>
         </div>
 

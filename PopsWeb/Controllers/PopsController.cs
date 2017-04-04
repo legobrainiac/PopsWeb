@@ -15,6 +15,11 @@ namespace PopsWeb.Controllers
             return View(pops.list ());
         }
 
+        public ActionResult Rate()
+        {
+            return RedirectToAction ("Rate", "PopsRating");
+        }
+
         public ActionResult Delete (int id)
         {
             pops.delete (id);

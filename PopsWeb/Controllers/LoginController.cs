@@ -30,6 +30,7 @@ namespace PopsWeb.Controllers
                 {
                     Session["usertype"] = utilizador.usertype;
                     Session["username"] = utilizador.username;
+                    Session["userid"] = utilizador.id;
                     FormsAuthentication.SetAuthCookie (utilizador.username, false);
 
                     if (Request.QueryString["ReturnUrl"] == null)

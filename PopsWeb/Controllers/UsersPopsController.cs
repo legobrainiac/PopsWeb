@@ -51,6 +51,8 @@ namespace PopsWeb.Controllers
 
         public ActionResult Create ()
         {
+            PopsDB db = new PopsDB ();
+            ViewBag.pops = db.list ();
             return View ();
         }
 
@@ -60,6 +62,7 @@ namespace PopsWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                novo.id_user = int.Parse(Session["userid"].ToString ());
                 usersPops.create (novo);
                 return RedirectToAction ("index");
             }

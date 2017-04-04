@@ -34,6 +34,7 @@ namespace PopsWeb.Models
                 utilizador = new UsersModel ();
                 utilizador.username = dados.Rows[0][1].ToString ();
                 utilizador.usertype = int.Parse (dados.Rows[0][4].ToString ());
+                utilizador.id = int.Parse (dados.Rows[0][0].ToString ());
             }
             return utilizador;
         }
